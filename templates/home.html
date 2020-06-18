@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block head %}
+<title>The Broadcast</title>
+{% endblock%}
+
+{% block body %}
+<div class="jumbotron">
+
+    <h1>The Broadcast</h1>
+    <h3>Brings You To Aware Around The World</h3><br>
+    <p class="lead">No.1 News Website in the Country.
+        You can find all kinds of news here.
+        Read among your favourite categories.
+        Register now to start writing with us. Thank you</p>
+    <a class="btn btn-lg btn-secondary" href="/news" role="button">Goto News &raquo;</a>
+    {% if session.logged_in != True %}
+    <a class="btn btn-lg btn-primary" href="/register" role="button">Register Now &raquo;</a>
+    {% endif %}
+</div>
+{% endblock%}

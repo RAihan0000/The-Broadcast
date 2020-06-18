@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+
+{% block head %}
+    <title>News</title>
+{% endblock%}
+
+{% block body%}
+    <div class="container">
+        <h1>Latest Headlines
+            
+        {% if session.logged_in %}
+            <a href="/addnews"><button class="btn btn-success float-right">Add News</button></a>
+        {% endif %}
+        
+        </h1>
+        <div class="drop-down float-right">
+            <a class="btn btn-secondary dropdown-toggle pull-right" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Filter By Category
+            </a>
+          
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="/news">All</a>
+                <a class="dropdown-item" href="/filter/General">General</a>
+                <a class="dropdown-item" href="/filter/Life Style">Life Style</a>
+                <a class="dropdown-item" href="/filter/Travel">Travel</a>
+                <a class="dropdown-item" href="/filter/Sports">Sports</a>
+        </div>
+        </div>
+        {% if News == [] %}
+            <br>
+            <br>
+            <h2>New Articles Will Be Added Soon</h2>
+        {% else %}
+            {% for post in News %}
+                <h2> <a href="/single/{{post.id}}">{{post.title}} </a>
+                    
+                </h2>
+                <p class="float-right"><small>Category: {{post.category}}</small></p>
+                <p>Written by {{post.author}} on {{post.date_created}}</p>
+            {%endfor%}
+        {% endif %}
+    </div>
+{% endblock %}

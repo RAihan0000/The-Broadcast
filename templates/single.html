@@ -1,0 +1,22 @@
+{% extends 'index.html '%}
+
+{% block head %}
+<title>News Article</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <h2>{{post.title}} 
+        {% if session.username == 'Raihan' %}
+            <p class="float-right">
+            <a href="/edit/{{post.id}}"><button class="btn btn-secondary pull-right">Edit</button></a>
+            <a href="/delete/{{post.id}}"><button class="btn btn-danger pull-right">Delete</button></a></p>
+        {% endif %}
+    </h2>
+    <p class="float-right"><small>Category: {{post.category}}</small></p>
+    <p>Written by {{post.author}} on {{post.date_created}}</p>
+    <p>{{post.content}}</p>
+
+</div>
+{% endblock %}
